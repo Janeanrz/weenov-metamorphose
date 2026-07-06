@@ -185,8 +185,14 @@ footer span{font-size:12.5px;letter-spacing:.08em;color:var(--txt-dim)}
   .layer-avant img{width:84%}
   .layer-apres img{width:68%}
   .sens-grid{grid-template-columns:1fr}
-  .sys-grid{grid-template-columns:1fr 1fr}
-  .sys.pap,.sys.charte,.sys.banner,.sys.p1,.sys.p2,.sys.txt{grid-column:span 2}
+  /* Livré : en mobile chaque visuel s'affiche ENTIER, hauteur naturelle,
+     jamais recadré ni étiré par les rangées de la grille desktop. */
+  .sys-grid{grid-template-columns:1fr 1fr;gap:12px;grid-auto-rows:auto}
+  .sys.pap,.sys.charte,.sys.banner,.sys.txt{grid-column:span 2}
+  .sys.p1,.sys.p2{grid-column:span 1}
+  .sys.pap,.sys.charte,.sys.banner,.sys.p1,.sys.p2{grid-row:auto}
+  .sys img{height:auto;object-fit:contain}
+  .sys.txt{padding:22px 20px}
   .chiffres .band{grid-template-columns:1fr 1fr;gap:34px}
   .galerie-cards{grid-template-columns:1fr}
   .diag{grid-template-columns:1fr}
