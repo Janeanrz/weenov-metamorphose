@@ -1,3 +1,4 @@
+<meta charset="UTF-8">
 <title>Métamorphose Weenov</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -136,18 +137,34 @@ a{color:var(--lime)}
 .temoignage blockquote{font-family:var(--disp);font-weight:600;font-size:clamp(22px,2.6vw,30px);color:var(--ivoire);line-height:1.35}
 .temoignage cite{display:block;margin-top:18px;font-style:normal;font-size:14px;color:var(--txt-dim)}
 
-/* ---------- Galerie ---------- */
-.galerie-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:52px}
-.gcard{border-radius:14px;border:1px solid rgba(233,237,222,.12);padding:34px 28px;min-height:220px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;background:rgba(247,250,238,.02)}
-.gcard .num{position:absolute;top:22px;left:26px;font-family:var(--disp);font-weight:700;font-size:15px;color:var(--txt-dim)}
-.gcard.done{border-color:rgba(201,252,0,.45)}
-.gcard.done .num{color:var(--lime)}
-.gcard h3{font-family:var(--disp);font-weight:600;font-size:22px;color:var(--ivoire)}
-.gcard p{font-size:14.5px;color:var(--txt-dim);margin-top:6px}
-.gcard .blur{position:absolute;inset:auto -30% -55% -30%;height:75%;filter:blur(46px);opacity:.5;pointer-events:none}
-.gcard.g2 .blur{background:radial-gradient(circle,#c9fc00 0%,transparent 70%)}
-.gcard.g3 .blur{background:radial-gradient(circle,#eafbb0 0%,transparent 70%)}
-.gcard.you{border-style:dashed;border-color:rgba(201,252,0,.4)}
+/* ---------- Galerie (fidèle à la galerie de l'accueil Studio, palette Weenov) ---------- */
+.galerie-cards{display:grid;grid-template-columns:1.15fr 1.15fr .9fr;gap:22px;margin-top:52px}
+.gcard{position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(233,237,222,.12);min-height:360px;display:flex;flex-direction:column;justify-content:flex-end;background:var(--vert-encre);text-decoration:none;transition:transform .25s ease,border-color .25s ease}
+@media (hover:hover) and (pointer:fine){a.gcard:hover{transform:translateY(-4px);border-color:rgba(201,252,0,.5)}}
+a.gcard:active{transform:scale(.985)}
+.gcard.done{border-color:rgba(201,252,0,.4)}
+.gcard .thumb{position:absolute;inset:0;z-index:0}
+.gcard .thumb img{width:100%;height:100%;object-fit:cover;object-position:center}
+.gcard .num{position:absolute;top:20px;left:22px;z-index:3;font-family:var(--disp);font-weight:700;font-size:14px;letter-spacing:.14em;color:var(--lime)}
+.gcard .body{position:relative;z-index:3;padding:32px 26px 26px;background:linear-gradient(0deg,rgba(14,15,12,.98) 0%,rgba(14,15,12,.95) 70%,rgba(14,15,12,.86) 90%,rgba(14,15,12,.45) 100%)}
+.gcard .kind{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--txt-dim);margin-bottom:9px}
+.gcard h3{font-family:var(--disp);font-weight:600;font-size:25px;color:var(--ivoire)}
+.gcard .gline{font-size:14px;color:var(--txt-dim);margin:7px 0 16px;max-width:32ch}
+.gcard .go{position:relative;font-size:12.5px;font-weight:600;letter-spacing:.03em;color:var(--lime);display:inline-flex;align-items:center;gap:8px}
+.gcard .go::after{content:"";position:absolute;left:0;bottom:-3px;width:100%;height:1px;background:var(--lime);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.65,0,.35,1)}
+@media (hover:hover) and (pointer:fine){a.gcard:hover .go::after{transform:scaleX(1)}}
+.gcard .go svg{width:14px;height:14px;transition:transform .2s}
+@media (hover:hover) and (pointer:fine){a.gcard:hover .go svg{transform:translateX(4px)}}
+.gcard .here{position:relative;z-index:3;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--lime)}
+.gcard.you{border-style:dashed;border-color:rgba(201,252,0,.4);justify-content:center;text-align:center;background:var(--encre)}
+.gcard.you .body{background:none}
+.gcard.you .reticle{width:64px;height:64px;margin:0 auto 22px;position:relative}
+.gcard.you .reticle::before,.gcard.you .reticle::after{content:"";position:absolute;background:rgba(201,252,0,.5)}
+.gcard.you .reticle::before{left:50%;top:0;bottom:0;width:1px;transform:translateX(-.5px)}
+.gcard.you .reticle::after{top:50%;left:0;right:0;height:1px;transform:translateY(-.5px)}
+.gcard.you .ring{position:absolute;inset:13px;border:1px solid rgba(201,252,0,.5);border-radius:50%}
+.gcard.you .glow{position:absolute;inset:auto -30% -55% -30%;height:75%;filter:blur(46px);opacity:.4;background:radial-gradient(circle,var(--lime-pale) 0%,transparent 70%);z-index:0}
+.gcard.you .gline{margin-bottom:0;max-width:26ch;margin-inline:auto}
 
 /* ---------- Tunnel ---------- */
 .tunnel{background:var(--ivoire);color:#2a2e20}
@@ -429,22 +446,34 @@ footer span{font-size:12.5px;letter-spacing:.08em;color:var(--txt-dim)}
     <h2 class="reveal">Weenov ouvre la galerie. D'autres marques suivent déjà.</h2>
     <div class="galerie-cards">
       <div class="gcard done reveal">
+        <div class="thumb"><img src="weenov_mock.jpg" alt="Carte de visite Weenov RH, logotype vert lime et signature sur papier noir" loading="lazy"></div>
         <span class="num">N°1</span>
-        <h3>Weenov RH</h3>
-        <p>Externalisation RH, paye et gestion sociale · Martinique. Cette page.</p>
+        <div class="body">
+          <div class="kind">Cabinet de recrutement</div>
+          <h3>Weenov RH</h3>
+          <div class="gline">Identité complète : logo, charte, supports, réseaux.</div>
+          <span class="here">Vous y êtes</span>
+        </div>
       </div>
-      <div class="gcard g2 done reveal">
+      <a class="gcard done reveal" href="https://metamorphose.annarozdesign.com">
+        <div class="thumb"><img src="deco_mark.jpg" alt="Carte de visite Annaroz Design, façonnage or à chaud sur papier noir" loading="lazy"></div>
         <span class="num">N°2</span>
-        <div class="blur"></div>
-        <h3>Annaroz Design</h3>
-        <p>Décoration d'intérieur et rendu 3D · Martinique. Le studio, par lui-même. <a href="https://janeanrz.github.io/annaroz-metamorphose/">Voir sa métamorphose.</a></p>
-      </div>
-      <div class="gcard g3 you reveal">
-        <span class="num">N°3</span>
-        <div class="blur"></div>
-        <h3>La vôtre ?</h3>
-        <p>La galerie n'attend que votre marque. <a href="#diagnostic">Commencez par le diagnostic offert.</a></p>
-      </div>
+        <div class="body">
+          <div class="kind">Décoration d'intérieur</div>
+          <h3>Annaroz Design</h3>
+          <div class="gline">La métamorphose de marque, déployée jusqu'au terrain.</div>
+          <span class="go">Voir l'étude de cas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+      <a class="gcard you reveal" href="#diagnostic">
+        <div class="glow"></div>
+        <div class="body">
+          <div class="reticle"><span class="ring"></span></div>
+          <span class="num" style="position:static;display:block;margin-bottom:8px">N°3</span>
+          <h3>La vôtre</h3>
+          <div class="gline">Place réservée à la prochaine marque révélée.</div>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -465,7 +494,7 @@ footer span{font-size:12.5px;letter-spacing:.08em;color:var(--txt-dim)}
       <div class="offre reveal">
         <h3>L'Essentiel</h3>
         <p class="sub">Des fondations nettes pour démarrer.</p>
-        <p class="prix">à partir de <b>590&nbsp;€</b></p>
+        <p class="prix"><b>990&nbsp;€</b></p>
         <ul>
           <li>Plusieurs directions créatives, montrées en situation</li>
           <li>Logo final dans tous les formats professionnels</li>
@@ -475,7 +504,7 @@ footer span{font-size:12.5px;letter-spacing:.08em;color:var(--txt-dim)}
       <div class="offre full reveal">
         <h3>La Métamorphose</h3>
         <p class="sub">L'identité complète, comme Weenov, en une semaine.</p>
-        <p class="prix">à partir de <b>1&nbsp;490&nbsp;€</b></p>
+        <p class="prix"><b>2&nbsp;490&nbsp;€</b> ou 3&nbsp;×&nbsp;830&nbsp;€</p>
         <ul>
           <li>Tout L'Essentiel</li>
           <li>Charte graphique complète</li>
